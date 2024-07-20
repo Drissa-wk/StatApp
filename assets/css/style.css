@@ -1,0 +1,30 @@
+:root{
+    --pink: #F23869;
+    --white: #D5DAE5;
+}
+/* change the color of the sidebar */
+div[data-testid="stSidebarContent"], header[data-testid="stHeader"], .main{
+    background-color: #080A0D;
+    color: var(--white);
+}
+
+/* hide the header */
+/* header[data-testid="stHeader"]{
+    display: none;
+} */
+
+/* modify links of the sidebar */
+.st-emotion-cache-cw0gvd{
+    background-color: #272F59;
+    padding: 0.3rem 0.7rem;
+    border-radius: 10px;
+}
+
+a[data-testid="stSidebarNavLink"]:hover{
+    background-color: #41476A;
+}
+
+/* style of all headings */
+h1{
+    color: var(--pink);
+}

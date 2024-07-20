@@ -1,0 +1,16 @@
+[theme]
+#primary color
+primaryColor = "#ff69b4"
+
+#background color
+backgroundColor = "#080A0D"
+
+#background color for the sidebar
+secondaryBackgroundColor = "#080A0D"
+
+# color for the text
+textColor = "#fff"
+
+[client]
+# hide the menu at the top right of the application
+toolBarMode = "minimal
