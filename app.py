@@ -8,6 +8,7 @@ def load_css():
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 load_css()
+
 get_started_page = st.Page(
     page="views/get_started.py",
     title="Get Started",
