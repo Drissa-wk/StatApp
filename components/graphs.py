@@ -233,3 +233,60 @@ class PiePlotter:
             self.ax.axis("equal")
             st.pyplot(self.fig)
 
+
+# Boxplot
+class ScatterPlotter:
+    def __init__(self, data, selected_checkboxes):
+        self.data = data
+        self.selected_checkboxes = selected_checkboxes
+        # self.empty_container = empty_container
+        self.fig, self.ax = plt.subplots()
+        
+        # Categorical variables in selected checkboxes
+        self.selected_cat_checkboxes = [cat for cat in self.selected_checkboxes if cat in st.session_state.cat_columns]
+
+        # Numerical variables in selected checkboxes
+        self.selected_num_checkboxes = [num for num in self.selected_checkboxes if num in st.session_state.num_columns]
+
+    def two_var_scatterplot(self):
+        "Scatterplot for 02 numerical variables"
+        if len(self.selected_num_checkboxes) == 2 and len(self.selected_cat_checkboxes) == 0:
+
+            st.header("Nuage de points")
+            
+            self.fig.set_facecolor('#080A0D')
+            sns.scatterplot(data=self.data, 
+                            x=self.selected_num_checkboxes[0],
+                            y=self.selected_num_checkboxes[1], 
+                            ax=self.ax).set_facecolor('#080A0D')
+            self.ax.set_xlabel(self.selected_num_checkboxes[0], color="#D5DAE5")
+            self.ax.set_ylabel(self.selected_num_checkboxes[1], color="#D5DAE5")
+            self.ax.grid(color="#D5DAE5", linewidth=0.2)
+            self.ax.tick_params(axis="both", colors="#D5DAE5")
+            st.pyplot(self.fig)
+
+    def three_var_scatterplot(self):
+        "Scatterplot for 03 variables (two numerical and one categorical)"
+        if len(self.selected_num_checkboxes) == 2 and len(self.selected_cat_checkboxes) == 1:
+
+            st.header("Nuage de points")
+            
+            self.fig.set_facecolor('#080A0D')
+            sns.scatterplot(data=self.data, 
+                            x=self.selected_num_checkboxes[0],
+                            y=self.selected_num_checkboxes[1], 
+                            hue=self.selected_cat_checkboxes[0],
+                            ax=self.ax).set_facecolor('#080A0D')
+            self.ax.set_xlabel(self.selected_num_checkboxes[0], color="#D5DAE5")
+            self.ax.set_ylabel(self.selected_num_checkboxes[1], color="#D5DAE5")
+            self.ax.grid(color="#D5DAE5", linewidth=0.2)
+            self.ax.tick_params(axis="both", colors="#D5DAE5")
+            st.pyplot(self.fig)
+    
+
+    def plot(self):
+        "Plot scatterplot"
+        self.two_var_scatterplot()
+        self.three_var_scatterplot()
+
+

@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from components.show_dataframe import show_dataframe, show_columns
-from components.graphs import HistogramPlotter, PiePlotter, BoxPlotter, BarPlotter
+from components.graphs import HistogramPlotter, PiePlotter, BoxPlotter, BarPlotter, ScatterPlotter
 
 def draw_graphics(selected_checkboxes):
     # Select the empty container
@@ -24,6 +24,7 @@ def draw_graphics(selected_checkboxes):
         BoxPlotter(st.session_state.dataframe, selected_checkboxes).plot()
         BarPlotter(st.session_state.dataframe, selected_checkboxes).plot()
         PiePlotter(st.session_state.dataframe, selected_checkboxes).plot()
+        ScatterPlotter(st.session_state.dataframe, selected_checkboxes).plot()
 
 
 
