@@ -39,17 +39,12 @@ def descriptive_statistic(selected_checkboxes):
  
 
     with empty_container1.container():
-        st.header("2. Statistique Descriptive")
-
-        # Numerical variables
-        if len(selected_num_checkboxes) > 0:
-            st.subheader("Variables Numériques")
-            st.table(st.session_state.dataframe[selected_num_checkboxes].describe())
+        st.header("Statistique Descriptive")
 
         # Categorical variables
         if len(selected_cat_checkboxes) > 0:
             st.subheader("Variables Catégorielles")
-            st.table(pd.DataFrame(
+            st.write(pd.DataFrame(
                 data,
                 index=[
                     "# of valid values",
@@ -58,6 +53,12 @@ def descriptive_statistic(selected_checkboxes):
                     "# of unique values"
                 ]
             ))
+
+        # Numerical variables
+        if len(selected_num_checkboxes) > 0:
+            st.subheader("Variables Numériques")
+            st.write(st.session_state.dataframe[selected_num_checkboxes].describe())
+
 
 # Title
 st.title("Calculatrice Statistique")

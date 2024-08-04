@@ -9,7 +9,11 @@ def number_missing_values(df):
     nb_na = df.isna().sum().sum()
     if nb_na > 0:
         st.warning("Votre jeu de données contient des valeurs manquantes.\
-                   vous devrez les traiter avant de faire des analyses")
+                   vous devrez les traiter avant de faire des analyses",
+                   icon=":material/warning:")
+    else:
+        st.info(body="Pas de valeurs manquantes dans votre jeu de données",
+                icon=":material/thumb_up:")
         
 def show_columns(df):
     "shows the numerical and categorical variables of a dataframe"
@@ -73,7 +77,7 @@ def show_dataframe():
 
     with st.container():
         #header 1
-        st.header("1. Dataset")
+        st.header("Dataset")
 
         #button to change the dataframe
         with st.expander("Importer un dataset"):

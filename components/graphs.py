@@ -254,6 +254,9 @@ class ScatterPlotter:
 
             st.header("Nuage de points")
             
+            # Regression line
+            reg_line = st.toggle("Droite de Regression", value=False)
+
             self.fig.set_facecolor('#080A0D')
             sns.scatterplot(data=self.data, 
                             x=self.selected_num_checkboxes[0],
@@ -263,6 +266,17 @@ class ScatterPlotter:
             self.ax.set_ylabel(self.selected_num_checkboxes[1], color="#D5DAE5")
             self.ax.grid(color="#D5DAE5", linewidth=0.2)
             self.ax.tick_params(axis="both", colors="#D5DAE5")
+
+            # Regression line
+            if reg_line:
+                sns.regplot(
+                            data=self.data, 
+                            x=self.selected_num_checkboxes[0],
+                            y=self.selected_num_checkboxes[1], 
+                            line_kws={"color": "#F23869"},
+                            ax=self.ax
+                )
+
             st.pyplot(self.fig)
 
     def three_var_scatterplot(self):
@@ -271,6 +285,9 @@ class ScatterPlotter:
 
             st.header("Nuage de points")
             
+            # Regression line
+            reg_line = st.toggle("Droite de Regression", value=False)
+
             self.fig.set_facecolor('#080A0D')
             sns.scatterplot(data=self.data, 
                             x=self.selected_num_checkboxes[0],
@@ -281,6 +298,17 @@ class ScatterPlotter:
             self.ax.set_ylabel(self.selected_num_checkboxes[1], color="#D5DAE5")
             self.ax.grid(color="#D5DAE5", linewidth=0.2)
             self.ax.tick_params(axis="both", colors="#D5DAE5")
+
+            # Regression line
+            if reg_line:
+                sns.regplot(
+                            data=self.data, 
+                            x=self.selected_num_checkboxes[0],
+                            y=self.selected_num_checkboxes[1], 
+                            line_kws={"color": "#F23869"},
+                            ax=self.ax
+                )
+
             st.pyplot(self.fig)
     
 
