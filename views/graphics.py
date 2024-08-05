@@ -30,6 +30,15 @@ def draw_graphics(selected_checkboxes):
 
 # Title
 st.title("Graphiques")
+
+st.write("La visualisation des données est une étape essentielle de l'analyse. \
+    Sur cette page, vous pourrez créer une variété de graphiques, tels que des \
+        histogrammes, des diagrammes en boîte, des nuages de points ou des matrices \
+            de corrélation. Ces graphiques vous aideront à identifier les tendances, \
+         les outliers et les relations entre vos variables, vous offrant une \
+         compréhension approfondie de votre jeu de données.")
+
+# Dataframe
 show_dataframe()
 
 #list of columns

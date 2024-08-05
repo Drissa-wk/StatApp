@@ -158,12 +158,20 @@ def missing_values(df):
                         st.session_state.dataframe = df.fillna(df.median())
 
             with col3:
-                # Mode
+                # Mode 
                 if st.page_link("views/get_started.py",label="Mode", icon=":material/info:"):
                         st.session_state.dataframe = df.fillna(df.mode().iloc[0])
 
 
 # Title
 st.title("Missing Values")
+
+st.write("Les valeurs manquantes peuvent avoir un impact important sur l'analyse de vos données. \
+         Cette page vous permettra d'identifier et de traiter ces valeurs manquantes de manière \
+         efficace. Vous pourrez choisir parmi différentes méthodes de remplacement, \
+            comme la moyenne, la médiane ou l'imputation plus avancée, afin d'obtenir un \
+                jeu de données complet et prêt à être analysé.")
+
+# Dataframe
 show_dataframe()
 missing_values(st.session_state.dataframe)

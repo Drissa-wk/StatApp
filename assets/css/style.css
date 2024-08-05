@@ -8,6 +8,11 @@ div[data-testid="stSidebarContent"], header[data-testid="stHeader"], .main{
     color: var(--white);
 }
 
+/* padding of the app container */
+div[data-testid="stAppViewBlockContainer"]{
+    padding-top: 2rem;
+}
+
 /* hide the header */
 /* header[data-testid="stHeader"]{
     display: none;

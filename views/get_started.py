@@ -62,6 +62,14 @@ def descriptive_statistic(selected_checkboxes):
 
 # Title
 st.title("Calculatrice Statistique")
+
+st.write("Cette page vous offre un aperçu général de votre jeu de données. \
+         Vous pourrez y visualiser les statistiques descriptives de base pour chaque variable, \
+         telles que la moyenne, la médiane, l'écart-type, le minimum et le maximum. \
+         Ces informations vous aideront à mieux comprendre la répartition et les tendances \
+         de vos données, vous donnant ainsi une meilleure compréhension de votre problématique.")
+
+# Dataframe
 show_dataframe()
 
 #list of columns
