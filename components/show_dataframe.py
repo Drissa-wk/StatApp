@@ -15,7 +15,7 @@ def number_missing_values(df):
         st.info(body="Pas de valeurs manquantes dans votre jeu de données",
                 icon=":material/thumb_up:")
         
-def show_columns(df):
+def show_columns(df, cat_disabled=False):
     "shows the numerical and categorical variables of a dataframe"
 
     cat_columns = [] #categorical variables
@@ -43,10 +43,10 @@ def show_columns(df):
             for col in st.session_state.cat_columns:
                 if i%2 == 0:
                     with c1:
-                        checkboxes_columns[col] = st.checkbox(col)
+                        checkboxes_columns[col] = st.checkbox(col, disabled=cat_disabled)
                 else:
                     with c2:
-                        checkboxes_columns[col] = st.checkbox(col)
+                        checkboxes_columns[col] = st.checkbox(col, disabled=cat_disabled)
                 i+=1
         with col2:
             st.subheader("Variables Numériques")

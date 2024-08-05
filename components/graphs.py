@@ -233,7 +233,6 @@ class PiePlotter:
             self.ax.axis("equal")
             st.pyplot(self.fig)
 
-
 # Boxplot
 class ScatterPlotter:
     def __init__(self, data, selected_checkboxes):
@@ -317,4 +316,50 @@ class ScatterPlotter:
         self.two_var_scatterplot()
         self.three_var_scatterplot()
 
+# Boxplot
+class CorrPlotter:
+    def __init__(self, data, selected_checkboxes):
+        self.data = data
+        self.selected_checkboxes = selected_checkboxes
+        # self.empty_container = empty_container
+        self.fig, self.ax = plt.subplots(figsize=(8, 5))
+        
+        # Categorical variables in selected checkboxes
+        self.selected_cat_checkboxes = [cat for cat in self.selected_checkboxes if cat in st.session_state.cat_columns]
+
+        # Numerical variables in selected checkboxes
+        self.selected_num_checkboxes = [num for num in self.selected_checkboxes if num in st.session_state.num_columns]
+
+    def all_var_corrplot(self):
+        "Corr plot for all numerical variables"
+        if len(st.session_state.num_columns) > 0 and len(self.selected_cat_checkboxes) == 0:
+
+            st.header("Corrélation pour toutes les variables numériques")
+            
+            self.fig.set_facecolor('#080A0D')
+            sns.heatmap(data=self.data[st.session_state.num_columns].corr(), 
+                            annot=True, 
+                            cbar=False,
+                            ax=self.ax).set_facecolor('#080A0D')
+            self.ax.tick_params(axis="both", colors="#D5DAE5")
+            st.pyplot(self.fig)
+
+    def selected_var_corrplot(self):
+        "Corr plot for all selected numerical variables"
+        if len(self.selected_num_checkboxes) > 1 and len(self.selected_cat_checkboxes) == 0:
+
+            st.header("Corrélation pour les variables selectionnées")
+            
+            self.fig.set_facecolor('#080A0D')
+            sns.heatmap(data=self.data[self.selected_num_checkboxes].corr(), 
+                            annot=True, 
+                            cbar=False,
+                            ax=self.ax).set_facecolor('#080A0D')
+            self.ax.tick_params(axis="both", colors="#D5DAE5")
+            st.pyplot(self.fig)
+
+    def plot(self):
+        "Plot scatterplot"
+        self.selected_var_corrplot()
+        self.all_var_corrplot()
 
